@@ -28,6 +28,11 @@ jobs:
 
     - name: Push Docker image to DockerHub
       run: |
-        docker tag scripttools-app ${{ secrets.DOCKER_USERNAME }}/scripttools:latest
-        docker push ${{ secrets.DOCKER_USERNAME }}/scripttools:latest
+        IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/scripttools:latest
+        docker tag scripttools-app $IMAGE_NAME
+        docker push $IMAGE_NAME
+
+    - name: Show built Docker image
+      run: docker images
+
 
